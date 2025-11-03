@@ -23,8 +23,7 @@ const FormRegister = () => {
             label="Phone Number"
           />
           <div className="gap-5 flex">
-            <Button variant="bg-black">Create</Button>
-            <Button variant="bg-white border border-gray-600" color="text-black">Sigin</Button>
+            <Button variant="bg-black p-3">Create</Button>
           </div>
         </form>
     )

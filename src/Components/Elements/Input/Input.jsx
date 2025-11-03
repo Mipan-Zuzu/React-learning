@@ -7,6 +7,7 @@ const Input = (props) => {
       placeholder= {placeholder}
       name={name}
       id={name}
+      required
     />
   );
 };

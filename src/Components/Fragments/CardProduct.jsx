@@ -28,9 +28,9 @@ const Body = (props) => {
              <div className="px pb-5">
           <a href="">
             <div className="flex gap-2 mb-3 justify-self-center">
-              <a className="p-2 h-2 w-2 border border-black rounded-full bg-black inline-block"></a>
-              <a className="p-2 h-2 w-2 border border-black rounded-full bg-cyan-700 inline-block"></a>
-              <a className="p-2 h-2 w-2 rounded-full border border-gray-500 inline-block"></a>
+              <p className="p-2 h-2 w-2 border border-black rounded-full bg-black inline-block"></p>
+              <p className="p-2 h-2 w-2 border border-black rounded-full bg-cyan-700 inline-block"></p>
+              <p className="p-2 h-2 w-2 rounded-full border border-gray-500 inline-block"></p>
             </div>
             <h3 className="text-2xl text-center font-mono font-semibold tracking-tight">
                 {title}
@@ -52,7 +52,7 @@ const Footer = () => {
           <span className="rounded-2xl font-mono p-2 bg-blue-500 text-white">
             Selengkapnya
           </span>
-          <Button variant={"bg-black"} color={"text-white"}>
+          <Button variant={"bg-black p-3"} color={"text-white"}>
             Buy ›
           </Button>
         </div>

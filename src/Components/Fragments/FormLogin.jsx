@@ -2,8 +2,16 @@ import InputCard from "../Elements/Input/index"
 import Button from "../Elements/Button/index"
 
 const FormLogin = () => {
+
+  const HandleLogin = (e) => {
+    e.preventDefault()
+    localStorage.setItem('Email',e.target.email.value)
+    localStorage.setItem('Number',e.target.number.value)
+    window.location.href = '/product'
+  }
+
     return (
-         <form action="">
+         <form onSubmit={HandleLogin}>
           <InputCard
             placeholder="Exxx@mail.com"
             type="email"
@@ -17,8 +25,7 @@ const FormLogin = () => {
             label="Phone Number"
           />
           <div className="gap-5 flex">
-            <Button variant="bg-black">Login</Button>
-            <Button variant="bg-white border border-gray-600" color="text-black">Sigin</Button>
+            <Button variant="bg-black p-3" type="submit" OnClic={HandleLogin} >Login</Button>
           </div>
         </form>
     )
