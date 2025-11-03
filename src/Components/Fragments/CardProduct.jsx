@@ -36,13 +36,13 @@ const Body = (props) => {
                 {title}
             </h3>
             <p className="text-center font-medium font-mono">
-              {detail}
-            </p>
+              {detail} 
+            </p>  
             <p className="text-sm max-w-[300px] justify-self-center font-mono text-center text-gray-500">
               {children}
             </p>
           </a>
-        </div>
+        </div>  
     )
 }
 
