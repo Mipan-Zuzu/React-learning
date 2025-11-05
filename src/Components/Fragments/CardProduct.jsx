@@ -3,7 +3,7 @@ import Button from '../Elements/Button/index'
 const CardProduct = (props) => {
     const {children} = props
     return (
-      <div className="w-full max-w-sm bg-white border border-gray-600 rounded-r-2xl shadow hover:scale-95 duration-300">
+      <div className="w-full max-w-sm bg-white border mx-2 my-2 border-gray-600 rounded-r-2xl shadow hover:scale-95 duration-300">
         {children}
       </div>
     )
@@ -46,14 +46,15 @@ const Body = (props) => {
     )
 }
 
-const Footer = () => {
+const Footer = (props) => {
+  const {HandleAddCart, id} = props
     return (
         <div className="flex gap-3 items-center mb-10 justify-self-center justify-between">
           <span className="rounded-2xl font-mono p-2 bg-blue-500 text-white">
             Selengkapnya
           </span>
-          <Button variant={"bg-black p-3"} color={"text-white"}>
-            Buy ›
+          <Button onClick={() => {HandleAddCart(id)}} variant={"bg-black p-3"} color={"text-white"}>
+            Add Cart ›
           </Button>
         </div>
     )
