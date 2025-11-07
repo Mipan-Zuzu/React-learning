@@ -1,6 +1,7 @@
 import CardProduct from "../Components/Fragments/CardProduct";
 import Button from "../Components/Elements/Button/index";
 import { Fragment, useState } from "react";
+import Counter from '../Components/Fragments/Counter'
 
 const products = [
   {
@@ -102,7 +103,7 @@ const ProductPage = () => {
                 );
                 return (
                   <tr key={item.id}>
-                    <td>{product?.title}</td>
+                    <td>{product.title}</td>
                     <td>{item.quity}</td>
                   </tr>
                 );
@@ -111,6 +112,9 @@ const ProductPage = () => {
           </table>
         </div>
       </div>
+      {/* <div className="flex justify-center">
+        <Counter />
+      </div> */}
     </Fragment>
   );
 };

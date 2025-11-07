@@ -1,4 +1,3 @@
-import { Children } from "react";
 
 const Label = (props) => {
   const {htmlFor, children } = props;
