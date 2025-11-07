@@ -1,6 +1,6 @@
 import CardProduct from "../Components/Fragments/CardProduct";
 import Button from "../Components/Elements/Button/index";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Counter from '../Components/Fragments/Counter'
 
 const products = [
@@ -9,6 +9,7 @@ const products = [
     img: "macbook-1.jpg",
     title: "MacBook Air 13” dan 15”",
     detailShort: "Chip M4",
+    pricese : 12000000,
     detailLong:
       "Luar biasa tipis dan cepat untuk bekerja, bermain, dan berkarya dimana saja.",
   },
@@ -17,6 +18,7 @@ const products = [
     img: "macbook-2.jpg",
     title: "MacBook Pro 14” dan 16”",
     detailShort: "Chip M5, M4 Pro, atau M4 Max",
+    pricese : 40000000,
     detailLong:
       "Laptop Mac paling canggih untuk pekerjaan berat dengan file besar.",
   },
@@ -25,18 +27,30 @@ const products = [
     img: "iMac-1.jpg",
     title: "iMac",
     detailShort: "Chip M5, M4 Pro, atau M4 Max",
+    pricese : 20000000,
     detailLong:
       "Desktop lengkap yang menakjubkan untuk kreativitas dan produktivitas.",
   },
 ];
 
 const ProductPage = () => {
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      quity: 1,
-    },
-  ]);
+  const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")) || [])
+  },[])
+
+  useEffect(() => {
+    if(cart.length > 0) {
+    const sum = cart.reduce((acc, item) => {
+      const product = products.find((productt) => productt.id === item.id)
+      return acc + product.pricese * item.quity
+    }, 0)
+    setTotalPrice(sum)
+    localStorage.setItem('cart', JSON.stringify(cart))
+    }
+  }, [cart])
 
   const Email = localStorage.getItem("Email");
   const HandleLogout = () => {
@@ -91,9 +105,10 @@ const ProductPage = () => {
           <h1 className="text-3xl font-mono font-bold">🛒 Cart ›</h1>
           <table className="text-left table-auto border-separate border-spacing-x-5">
             <thead>
-              <tr>
+              <tr className="">
                 <th>Product</th>
                 <th>Quantity</th>
+                <th>Prices</th>
               </tr>
             </thead>
             <tbody>
@@ -105,9 +120,26 @@ const ProductPage = () => {
                   <tr key={item.id}>
                     <td>{product.title}</td>
                     <td>{item.quity}</td>
+                    <td>{(product.pricese).toLocaleString("id-ID", {
+                      style: "currency",
+                      currency: "IDR"
+                    })}</td>
                   </tr>
                 );
               })}
+              <tr>
+                <td colSpan={3}>
+                  <b>Total Price</b>
+                </td>
+                <td>
+                  <b>
+                    {(totalPrice).toLocaleString("id-ID", {
+                    style: "currency",
+                    currency: "IDR"
+                  })}
+                  </b>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
