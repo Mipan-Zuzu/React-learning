@@ -1,5 +1,6 @@
 import InputCard from "../Elements/Input/index"
 import Button from "../Elements/Button/index"
+import { useEffect, useRef } from "react"
 
 const FormLogin = () => {
 
@@ -10,6 +11,12 @@ const FormLogin = () => {
     window.location.href = '/product'
   }
 
+   const EmailRef = useRef(null)
+
+   useEffect(() => {
+    EmailRef.current.focus()
+   }, [])
+
     return (
          <form onSubmit={HandleLogin}>
           <InputCard
@@ -17,6 +24,7 @@ const FormLogin = () => {
             type="email"
             name="email"
             label="Email"
+            ref={EmailRef}
           />
           <InputCard
             placeholder="82 00000000"

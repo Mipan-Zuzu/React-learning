@@ -1,4 +1,6 @@
-const Input = (props) => {
+import { forwardRef } from "react"
+
+const Input = forwardRef ( (props,ref) => {
     const {name, type = "text", placeholder = "type your text"} = props
   return (
     <input
@@ -7,9 +9,10 @@ const Input = (props) => {
       placeholder= {placeholder}
       name={name}
       id={name}
+      ref={ref}
       required
     />
   );
-};
+})
 
 export default Input
