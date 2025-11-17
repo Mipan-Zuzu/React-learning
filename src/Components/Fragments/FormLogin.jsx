@@ -1,41 +1,58 @@
 import InputCard from "../Elements/Input/index"
 import Button from "../Elements/Button/index"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import {login} from "../../services/auth.services"
 
 const FormLogin = () => {
-
+  const [loginFailed, setLoginFailed] = useState("")
   const HandleLogin = (e) => {
     e.preventDefault()
-    localStorage.setItem('Email',e.target.email.value)
-    localStorage.setItem('Number',e.target.number.value)
-    window.location.href = '/product'
+    // localStorage.setItem('Email',e.target.email.value)
+    // localStorage.setItem('Number',e.target.number.value)
+    
+    const data = {
+      username: e.target.username.value,
+      password: e.target.password.value
+    }
+    login(data, (status,res) => {
+      if(status) {
+        localStorage.setItem("token", res)
+        window.location.href = '/product'
+        console.log(res)
+      }else {
+        setLoginFailed(res.response.data)
+      }
+    })
   }
 
-   const EmailRef = useRef(null)
+   const UsernameRef = useRef(null)
 
    useEffect(() => {
-    EmailRef.current.focus()
+    UsernameRef.current.focus()
    }, [])
 
     return (
-         <form onSubmit={HandleLogin}>
+      <>
+          <form onSubmit={HandleLogin}>
+          {loginFailed && <p className="text-red-500">{loginFailed}</p>}
           <InputCard
-            placeholder="Exxx@mail.com"
-            type="email"
-            name="email"
-            label="Email"
-            ref={EmailRef}
+            placeholder="Jhon Doe"
+            type="text"
+            name="username"
+            label="Username"
+            ref={UsernameRef}
           />
           <InputCard
-            placeholder="82 00000000"
-            type="number"
-            name="number"
-            label="Phone Number"
+            placeholder="password"
+            type="password"
+            name="password"
+            label="Password "
           />
           <div className="gap-5 flex">
-            <Button variant="bg-black p-3" type="submit" OnClic={HandleLogin} >Login</Button>
+            <Button variant="bg-black p-3 hover:bg-white hover:text-black border border-black duration-300" type="submit" OnClic={HandleLogin} >Login</Button>
           </div>
         </form>
+        </>
     )
 } 
 

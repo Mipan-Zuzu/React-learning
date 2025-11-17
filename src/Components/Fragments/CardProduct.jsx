@@ -10,16 +10,16 @@ const CardProduct = (props) => {
 };
 
 const Header = (props) => {
-  const { img } = props;
+  const { image } = props;
   return (
     <a href="#">
-      <img src={`/images/${img}`} alt="produc" className="p-8 rounded-t-lg" />
+      <img src={`${image}`} alt="produc" className="p-8 rounded-t-lg h-60 w-full object-cover" />
     </a>
   );
 };
 
 const Body = (props) => {
-  const { children, title, detail } = props;
+  const { children, title, description } = props;
   return (
     <div className="px pb-5">
       <a href="">
@@ -28,10 +28,10 @@ const Body = (props) => {
           <p className="p-2 h-2 w-2 border border-black rounded-full bg-cyan-700 inline-block"></p>
           <p className="p-2 h-2 w-2 rounded-full border border-gray-500 inline-block"></p>
         </div>
-        <h3 className="text-2xl text-center font-mono font-semibold tracking-tight">
+        <h3 className="text-2xl line-clamp-1 text-center font-mono font-semibold tracking-tight">
           {title}
         </h3>
-        <p className="text-center font-medium font-mono">{detail}</p>
+        <p className="text-center font-medium font-mono">{description.substring(0,100)}</p>
         <p className="text-sm max-w-[300px] justify-self-center font-mono text-center text-gray-500">
           {children}
         </p>
