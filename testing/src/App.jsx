@@ -1,37 +1,18 @@
-import {useReducer } from 'react'
+import React, { useState } from 'react'
 import './App.css'
-import { Type } from './postReducerType'
-import { initial, handleReducer } from './postReducer'
-import { useId } from 'react'
+
+const Child = React.memo(function Child({value}){
+  console.log("render child")
+  return <span>{value}</span>
+})
 
 const App = () => {
-  const [state, dispath] = useReducer(handleReducer, initial)
-  const id = useId()
-
-  const handleFetch = () => {
-    dispath({ type : "starting"})
-    fetch('https://dummyjson.com/todos')
-    .then((res) => res.json())
-    .then((data) => { 
-      dispath({type : "fetch", payload : data.todos})
-    })
-    .catch(() => {
-      dispath({type : "error"})
-    })
-  }
+  const [count, setCount] = useState(0)
   return (
     <div>
-        <label htmlFor={id}>Email</label>
-        <input id={id}/>
-      <button onClick={() => handleFetch()}>
-         {state.loading ? "loading" : "klik"}
-        </button>
-        <span>{!state.data ? "" : state.data.map((item, index) => {
-          return <div key={index}>
-            <li>{item.todo}</li>
-          </div>
-        })}</span>
-        <span>{state.error? "error king" : ''}</span>
+        <Child value={"hello"} />
+        <span>{count}</span>
+        <button onClick={() => setCount(count + 1)} >klik</button>
     </div>
   )
 }
