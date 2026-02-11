@@ -1,9 +1,9 @@
-import ExampleUseMemo from './Components/ExampleUseMemo'
+import ExampleUseCallback from "./Components/ExampleUseCallback"
 
 const App = () => {
   return (
     <div>
-      <ExampleUseMemo />
+      <ExampleUseCallback />
     </div>
   )
 }
