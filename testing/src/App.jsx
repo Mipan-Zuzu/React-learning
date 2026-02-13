@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from "react-redux"
 import { decrement, increment } from "./features/Counter"
+import { getProduct } from "./features/productSlice"
 
 const App = () => {
   const count = useSelector((state) => state.counter.value)
   const dispatch = useDispatch()
+  getProduct()
+
   return (
     <div>
       <div>

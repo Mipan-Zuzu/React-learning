@@ -1,0 +1,64 @@
+{
+    "products" : [
+        {
+            "id" : 1,
+            "barang" : "Susu ikan",
+            "price" : 30
+        },
+        {
+            "id" : 2,
+            "barang" : "spatu",
+            "price" : 23
+        },
+        {
+            "id" : 3,
+            "barang" : "televisi",
+            "price" : 34
+        },
+        {
+            "id" : 4,
+            "barang" : "laptop",
+            "price" : 33
+        },
+        {
+            "id" : 5,
+            "barang" : "piala",
+            "price" : 50
+        },
+        {
+            "id" : 6,
+            "barang" : "pintu",
+            "price" : 38
+        },
+        {
+            "id" : 7,
+            "barang" : "kaca",
+            "price" : 21
+        },
+        {
+            "id" : 8,
+            "barang" : "kursi",
+            "price" : 26
+        },
+        {
+            "id" : 9,
+            "barang" : "lampu",
+            "price" : 28
+        },
+        {
+            "id" : 10,
+            "barang" : "mouse",
+            "price" : 15
+        },
+        {
+            "id" : 11,
+            "barang" : "keyboard",
+            "price" : 40
+        },
+        {
+            "id" : 12,
+            "barang" : "aquarium",
+            "price" : 100
+        }
+    ]
+}
